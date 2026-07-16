@@ -1,7 +1,7 @@
 {
   "name": "solocash-web-root",
   "version": "1.0.0",
-  "description": "SoloCash Web - Root package to run backend and frontend concurrently",
+  "description": "SoloCash Web starter",
   "scripts": {
     "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "backend": "npm start --prefix backend",
