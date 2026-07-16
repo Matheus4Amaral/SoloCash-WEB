@@ -19,7 +19,7 @@ CREATE TABLE public.usuarios (
     auth_id UUID,
     criado_em TIMESTAMP DEFAULT now(),
     nome TEXT NOT NULL,
-    status SMALLINT,
+    stts SMALLINT,
     desativo_em TIMESTAMP,
     codigo_ativa INTEGER,
 
@@ -57,16 +57,11 @@ CREATE TABLE public.alertas (
 CREATE TABLE public.transacoes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_id UUID,
-
-    tipo TEXT NOT NULL
-        CHECK (tipo IN ('entrada', 'saida')),
-
+    tipo TEXT NOT NULL CHECK (tipo IN ('entrada', 'saida')),
     valor NUMERIC NOT NULL,
     descricao TEXT,
-
     categoria_id UUID,
     categoria_pessoal_id UUID,
-
     criado_em TIMESTAMP DEFAULT now(),
     data DATE,
 
