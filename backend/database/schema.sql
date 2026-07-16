@@ -1,20 +1,23 @@
 -- Habilita a geração de UUIDs
+CREATE DATABASE dbsolocash;
+
+-- Habilita a geração de UUIDs
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-CREATE TABLE public.usuarios_auth (
+CREATE TABLE usuarios_auth (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     email TEXT UNIQUE NOT NULL,
     senha TEXT NOT NULL,
     criado_em TIMESTAMP DEFAULT now()
 );
 
-CREATE TABLE public.categorias (
+CREATE TABLE categorias (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nome TEXT NOT NULL,
     criado_em TIMESTAMP DEFAULT now()
 );
 
-CREATE TABLE public.usuarios (
+CREATE TABLE usuarios (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_id UUID,
     criado_em TIMESTAMP DEFAULT now(),
@@ -25,10 +28,10 @@ CREATE TABLE public.usuarios (
 
     CONSTRAINT usuarios_auth_id_fkey
         FOREIGN KEY (auth_id)
-        REFERENCES public.usuarios_auth(id)
+        REFERENCES usuarios_auth(id)
 );
 
-CREATE TABLE public.categoria_pessoal (
+CREATE TABLE categoria_pessoal (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     auth_id UUID,
@@ -37,10 +40,10 @@ CREATE TABLE public.categoria_pessoal (
 
     CONSTRAINT categoria_pessoal_auth_id_fkey
         FOREIGN KEY (auth_id)
-        REFERENCES public.usuarios_auth(id)
+        REFERENCES usuarios_auth(id)
 );
 
-CREATE TABLE public.alertas (
+CREATE TABLE alertas (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_id UUID,
     titulo TEXT NOT NULL,
@@ -51,10 +54,10 @@ CREATE TABLE public.alertas (
 
     CONSTRAINT alertas_auth_id_fkey
         FOREIGN KEY (auth_id)
-        REFERENCES public.usuarios_auth(id)
+        REFERENCES usuarios_auth(id)
 );
 
-CREATE TABLE public.transacoes (
+CREATE TABLE transacoes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_id UUID,
 
@@ -72,13 +75,13 @@ CREATE TABLE public.transacoes (
 
     CONSTRAINT transacoes_auth_id_fkey
         FOREIGN KEY (auth_id)
-        REFERENCES public.usuarios_auth(id),
+        REFERENCES usuarios_auth(id),
 
     CONSTRAINT transacoes_categoria_id_fkey
         FOREIGN KEY (categoria_id)
-        REFERENCES public.categorias(id),
+        REFERENCES categorias(id),
 
     CONSTRAINT transacoes_categoria_pessoal_id_fkey
         FOREIGN KEY (categoria_pessoal_id)
-        REFERENCES public.categoria_pessoal(id)
+        REFERENCES categoria_pessoal(id)
 );
