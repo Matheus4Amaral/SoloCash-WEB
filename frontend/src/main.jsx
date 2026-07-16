@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App.jsx";
 import Alertas from "./pages/Alertas.jsx";
 import AlertasProprios from "./pages/AlertasProprios.jsx";
 import Categorias from "./pages/Categorias.jsx";
@@ -14,10 +13,12 @@ import Login from "./pages/Login.jsx";
 import RedefinirSenha from "./pages/RedefinirSenha.jsx";
 import Registrar from "./pages/Registrar.jsx";
 
+import './index.css';
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Login />,
   },
   {
     path: "/alertas",
