@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { supabase } from '../lib/supabase'
 
 const AuthContext = createContext()
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export function AuthProvider({ children }) {
 
@@ -9,94 +10,77 @@ export function AuthProvider({ children }) {
     const [nome, setNome] = useState('')
     const [loading, setLoading] = useState(true)
 
+    // Carrega sessão salva no localStorage ao iniciar
     useEffect(() => {
+        const token = localStorage.getItem('token')
+        const usuarioSalvo = localStorage.getItem('usuario')
 
-        const carregarUsuario = async (user) => {
-
-            if (!user) {
-                setUsuario(null)
-                setNome('')
-                setLoading(false)
-                return
+        if (token && usuarioSalvo) {
+            try {
+                const parsed = JSON.parse(usuarioSalvo)
+                setUsuario(parsed)
+                setNome(parsed.nome || '')
+            } catch {
+                localStorage.removeItem('token')
+                localStorage.removeItem('usuario')
             }
-
-            setUsuario(user)
-
-            const { data, error } = await supabase
-                .from('usuarios')
-                .select('nome')
-                .eq('auth_id', user.id)
-                .single()
-
-            if (!error && data) {
-                setNome(data.nome)
-            }
-
-            setLoading(false)
         }
 
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            carregarUsuario(session?.user ?? null)
-        })
-
-
-        const { data: listener } = supabase.auth.onAuthStateChange(
-            async (_event, session) => {
-                carregarUsuario(session?.user ?? null)
-            }
-        )
-
-        return () => {
-            listener.subscription.unsubscribe()
-        }
-
+        setLoading(false)
     }, [])
 
     const signIn = async (email, password) => {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) throw error
+        const res = await fetch(`${API_URL}/api/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, senha: password })
+        })
 
-    
-        const { data: usuarioData, error: erroUsuario } = await supabase
-            .from('usuarios')
-            .select('status')
-            .eq('auth_id', data.user.id)
-            .single()
+        const data = await res.json()
 
-        if (erroUsuario) throw erroUsuario
-
-        if (usuarioData.status === 0) {
-            await supabase.auth.signOut()
-            throw new Error('Conta desativada')
+        if (!res.ok) {
+            throw new Error(data.message || 'Erro ao fazer login')
         }
+
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('usuario', JSON.stringify(data.usuario))
+
+        setUsuario(data.usuario)
+        setNome(data.usuario.nome || '')
     }
 
     const signUp = async (nome, email, password) => {
-
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password
+        const res = await fetch(`${API_URL}/api/auth/registrar`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, email, senha: password })
         })
 
-        if (error) throw error
+        const data = await res.json()
 
-        if (!data.user) {
-            throw new Error('Usuário não criado')
+        if (!res.ok) {
+            throw new Error(data.message || 'Erro ao registrar')
         }
-
-        const { error: erroUsuario } = await supabase
-            .from('usuarios')
-            .insert({
-                nome,
-                auth_id: data.user.id,
-                status: 1
-            })
-
-        if (erroUsuario) throw erroUsuario
     }
 
-    const signOut = async () => {
-        await supabase.auth.signOut()
+    const signOut = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('usuario')
+        setUsuario(null)
+        setNome('')
+    }
+
+    // Helper para requisições autenticadas
+    const authFetch = (url, options = {}) => {
+        const token = localStorage.getItem('token')
+        return fetch(url, {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...(options.headers || {}),
+                ...(token ? { Authorization: `Bearer ${token}` } : {})
+            }
+        })
     }
 
     return (
@@ -107,10 +91,11 @@ export function AuthProvider({ children }) {
                 loading,
                 signIn,
                 signUp,
-                signOut
+                signOut,
+                authFetch
             }}
         >
-            {!loading && children}
+            {children}
         </AuthContext.Provider>
     )
 }

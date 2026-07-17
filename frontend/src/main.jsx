@@ -18,46 +18,48 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/alertas",
-    element: <Alertas />,
-  },
-  {
-    path: "/alertasproprios",
-    element: <AlertasProprios />,
-  },
-  {
-    path: "/categorias",
-    element: <Categorias />,
-  },
-  {
-    path: "/ganhos",
-    element: <Ganhos />,
-  },
-  {
-    path: "/gastos",
-    element: <Gastos />,
-  },
-  {
-    path: "/historico",
-    element: <Historico />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/redefinirsenha",
-    element: <RedefinirSenha />,
-  },
-  {
-    path: "/registrar",
-    element: <Registrar />,
+    children: [
+      {
+        path: "alertas",
+        element: <Alertas />,
+      },
+      {
+        path: "alertasproprios",
+        element: <AlertasProprios />,
+      },
+      {
+        path: "categorias",
+        element: <Categorias />,
+      },
+      {
+        path: "ganhos",
+        element: <Ganhos />,
+      },
+      {
+        path: "gastos",
+        element: <Gastos />,
+      },
+      {
+        path: "historico",
+        element: <Historico />,
+      },
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "redefinirsenha",
+        element: <RedefinirSenha />,
+      },
+      {
+        path: "registrar",
+        element: <Registrar />,
+      },
+    ],
   },
 ]);
 
