@@ -12,6 +12,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import RedefinirSenha from "./pages/RedefinirSenha.jsx";
 import Registrar from "./pages/Registrar.jsx";
+import App from "./App.jsx";
 
 import './index.css';
 
