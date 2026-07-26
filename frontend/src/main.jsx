@@ -18,47 +18,49 @@ import './index.css';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
-  },
-  {
-    path: "/alertas",
-    element: <Alertas />,
-  },
-  {
-    path: "/alertasproprios",
-    element: <AlertasProprios />,
-  },
-  {
-    path: "/categorias",
-    element: <Categorias />,
-  },
-  {
-    path: "/ganhos",
-    element: <Ganhos />,
-  },
-  {
-    path: "/gastos",
-    element: <Gastos />,
-  },
-  {
-    path: "/historico",
-    element: <Historico />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/redefinirsenha",
-    element: <RedefinirSenha />,
-  },
-  {
-    path: "/registrar",
-    element: <Registrar />,
+    element: <App />,
+    children: [
+      {
+        path: "alertas",
+        element: <Alertas />,
+      },
+      {
+        path: "alertasproprios",
+        element: <AlertasProprios />,
+      },
+      {
+        path: "categorias",
+        element: <Categorias />,
+      },
+      {
+        path: "ganhos",
+        element: <Ganhos />,
+      },
+      {
+        path: "gastos",
+        element: <Gastos />,
+      },
+      {
+        path: "historico",
+        element: <Historico />,
+      },
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "redefinirsenha",
+        element: <RedefinirSenha />,
+      },
+      {
+        path: "registrar",
+        element: <Registrar />,
+      },
+    ],
   },
 ]);
 
