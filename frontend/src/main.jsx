@@ -2,16 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Alertas from "./pages/Alertas.jsx";
-import AlertasProprios from "./pages/AlertasProprios.jsx";
-import Categorias from "./pages/Categorias.jsx";
-import Ganhos from "./pages/Ganhos.jsx";
-import Gastos from "./pages/Gastos.jsx";
-import Historico from "./pages/Historico.jsx";
+import Alerts from "./pages/Alerts.jsx";
+import Categories from "./pages/Categories.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import Gains from "./pages/Gains.jsx";
+import History from "./pages/History.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
-import RedefinirSenha from "./pages/RedefinirSenha.jsx";
-import Registrar from "./pages/Registrar.jsx";
+import Register from "./pages/Register.jsx";
+import Spents from "./pages/Spents.jsx";
 import App from "./App.jsx";
 
 import './index.css';
@@ -22,28 +21,24 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "alertas",
-        element: <Alertas />,
+        path: "alerts",
+        element: <Alerts />,
       },
       {
-        path: "alertasproprios",
-        element: <AlertasProprios />,
+        path: "categories",
+        element: <Categories />,
       },
       {
-        path: "categorias",
-        element: <Categorias />,
+        path: "gains",
+        element: <Gains />,
       },
       {
-        path: "ganhos",
-        element: <Ganhos />,
+        path: "spents",
+        element: <Spents />,
       },
       {
-        path: "gastos",
-        element: <Gastos />,
-      },
-      {
-        path: "historico",
-        element: <Historico />,
+        path: "history",
+        element: <History />,
       },
       {
         path: "home",
@@ -54,12 +49,12 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "redefinirsenha",
-        element: <RedefinirSenha />,
+        path: "forgot-password",
+        element: <ForgotPassword />,
       },
       {
-        path: "registrar",
-        element: <Registrar />,
+        path: "register",
+        element: <Register />,
       },
     ],
   },

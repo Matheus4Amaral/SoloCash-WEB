@@ -1,0 +1,9 @@
+@import url("./AddGain.css");
+
+.edit-modal-card .modal-button.confirm {
+  background: #0ccf61;
+}
+
+.edit-modal-card .modal-subtitle {
+  margin-bottom: 14px;
+}

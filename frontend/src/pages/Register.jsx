@@ -1,10 +1,10 @@
-import "./styles/Login.css";
-import LoginCard from "../components/Login/LoginCard.jsx";
+import "./styles/Register.css";
+import RegisterCard from "../components/Register/RegisterCard.jsx";
 
-function Login() {
+function Register() {
   return (
     <>
-      <div className="login-page">
+      <div className="register-page">
         <div className="auth">
           <div>
             <div className="brand-row">
@@ -14,17 +14,14 @@ function Login() {
               <h1 className="brand-title">SoloCash</h1>
             </div>
             <p className="brand-subtitle">
-              Controle financeiro para quem mora sozinho
+              Começe a controlar suas finanças hoje
             </p>
           </div>
-          <LoginCard />
-          <p className="legal-text">
-            Ao continuar, você concorda com nossos Termos de Uso e Política de Privacidade
-          </p>
+          <RegisterCard />
         </div>
       </div>
     </>
   );
 }
 
-export default Login;
+export default Register;

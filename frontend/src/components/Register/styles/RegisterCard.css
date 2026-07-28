@@ -1,0 +1,136 @@
+.register-card {
+  width: min(100%, 440px);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+  padding: 32px 28px 24px;
+  color: #334155;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-form h1 {
+  font-size: 32px;
+  line-height: 1.1;
+  text-align: center;
+  color: #334155;
+}
+
+.form-description {
+  text-align: center;
+  color: #64748b;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #eef2f7;
+  border: 1px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  background: #fff;
+  border-color: #34d399;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+}
+
+.input-wrapper svg {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.input-wrapper input::placeholder {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-container .input-wrapper {
+  padding-right: 48px;
+}
+
+.eye-button {
+  position: absolute;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.have-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 440px);
+  justify-content: center;
+  margin-top: 35px;
+  border: none;
+  background: transparent;
+  color: #2c3e50;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.enter-button {
+  min-height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  background: #22c55e;
+  color: white;
+  box-shadow: 0 12px 24px rgba(34, 197, 94, 0.28);
+}
+
+.enter-button:hover {
+  transform: translateY(-1px);
+}
