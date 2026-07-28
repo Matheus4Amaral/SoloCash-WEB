@@ -20,12 +20,15 @@ function AppContent() {
 
         if (!usuario && !isPublicRouter) {
             // Sem login e não rota publica vai para => login
+            console.log("Passei1")
             navigate("/login", { replace: true });
         } else if (usuario && isPublicRouter) {
             // Logado e rota publica vai para => Home
+            console.log("Passei2")
             navigate("/home", { replace: true });
         } else if (location.pathname === '/') {
             // Rota " / " verifica se está logado
+            console.log("Passei3")
             navigate(usuario ? "/home" : "/login", { replace: true });
         }
     }, [usuario, loading, location.pathname, navigate]);
