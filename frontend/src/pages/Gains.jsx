@@ -1,5 +1,6 @@
 import { Plus, ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./styles/Gains.css";
 import Sidebar from "../components/Sidebar.jsx";
 import MonthlyGainsCard from "../components/Gains/MonthlyGainsCard.jsx";
@@ -25,6 +26,8 @@ const monthGainArray = [
 ];
 
 function Gains() {
+  const navigate = useNavigate();
+
   const [isVisible, setIsVisible] = useState(true);
   const [monthGain, setMonthGain] = useState(monthGainArray);
   const [openModal, setOpenModal] = useState(null);
@@ -32,6 +35,10 @@ function Gains() {
 
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   const openAddModal = () => {
@@ -97,7 +104,7 @@ function Gains() {
       <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-header-top">
-            <button type="button" className="back-button" aria-label="Voltar">
+            <button type="button" className="back-button" aria-label="Voltar" onClick={handleGoBack}>
               <ChevronLeft size={24} aria-hidden="true" />
             </button>
             <h1 className="dashboard-title">Gerenciar Ganhos</h1>

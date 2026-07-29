@@ -1,5 +1,6 @@
 import { Plus, ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./styles/Spents.css";
 import Sidebar from "../components/Sidebar.jsx";
 import MonthlySpentsCard from "../components/Spents/MonthlySpentsCard.jsx";
@@ -35,6 +36,8 @@ const monthSpentArray = [
 ];
 
 function Spents() {
+  const navigate = useNavigate();
+
   const [isVisible, setIsVisible] = useState(true);
   const [monthSpent, setMonthSpent] = useState(monthSpentArray);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -47,6 +50,10 @@ function Spents() {
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   const openAddModal = () => {
@@ -122,7 +129,7 @@ function Spents() {
       <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-header-top">
-            <button type="button" className="back-button" aria-label="Voltar">
+            <button type="button" className="back-button" aria-label="Voltar" onClick={handleGoBack}>
               <ChevronLeft size={24} aria-hidden="true" />
             </button>
             <h1 className="dashboard-title">Gerenciar Gastos</h1>

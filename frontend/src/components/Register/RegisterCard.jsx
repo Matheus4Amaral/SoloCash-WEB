@@ -12,6 +12,10 @@ const RegisterCard = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const visibilityPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email || !password || !confirmPassword)
@@ -27,8 +31,8 @@ const RegisterCard = () => {
     }
   };
 
-  const visibilityPassword = () => {
-    setShowPassword((prev) => !prev);
+  const handleLoginClick = () => {
+    navigate("/login");
   };
 
   return (
@@ -104,7 +108,7 @@ const RegisterCard = () => {
         <button
           type="submit"
           className="enter-button"
-          onClick={() => navigate("/home")}
+          onClick={handleLoginClick}
         >
           Criar conta
         </button>
@@ -113,7 +117,7 @@ const RegisterCard = () => {
       <button
         type="button"
         className="have-account"
-        onClick={() => navigate("/login")}
+        onClick={handleLoginClick}
       >
         Já tem uma conta? Entrar
       </button>

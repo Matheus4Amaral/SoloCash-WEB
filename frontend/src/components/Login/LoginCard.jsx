@@ -10,6 +10,10 @@ const LoginCard = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const visibilityPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) return alert("Preencha todos os campos");
@@ -21,8 +25,16 @@ const LoginCard = () => {
     }
   };
 
-  const visibilityPassword = () => {
-    setShowPassword((prev) => !prev);
+  const handleRegisterClick = () => {
+    navigate("/register");
+  };
+
+  const handleEnterClick = () => {
+    navigate("/gains");
+  };
+
+  const handleForgotPasswordClick = () => {
+    navigate("/forgot-password");
   };
 
   return (
@@ -69,7 +81,7 @@ const LoginCard = () => {
         <button
           type="button"
           className="forgot-password"
-          onClick={() => navigate("/forgot-password")}
+          onClick={handleForgotPasswordClick}
         >
           Esqueceu a senha?
         </button>
@@ -77,7 +89,7 @@ const LoginCard = () => {
         <button
           type="submit"
           className="enter-button"
-          onClick={() => navigate("/gains")}
+          onClick={handleEnterClick}
         >
           Entrar
         </button>
@@ -88,7 +100,7 @@ const LoginCard = () => {
       <button
         type="button"
         className="register-button"
-        onClick={() => navigate("/register")}
+        onClick={handleRegisterClick}
       >
         Criar uma conta
       </button>
