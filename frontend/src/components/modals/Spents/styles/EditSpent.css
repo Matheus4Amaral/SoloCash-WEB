@@ -1,0 +1,9 @@
+@import url("./AddSpent.css");
+
+.edit-modal-card .modal-spent-button.confirm {
+  background: #0ccf61;
+}
+
+.edit-modal-card .modal-subtitle {
+  margin-bottom: 14px;
+}

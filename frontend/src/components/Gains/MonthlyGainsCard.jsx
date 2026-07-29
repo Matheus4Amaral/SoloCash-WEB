@@ -4,7 +4,7 @@ import "./styles/MonthlyGainsCard.css";
 const MonthlyGainsCard = ({ isVisible, toggleVisibility, FormatReal }) => {
   return (
     <div className="gains-summary-card">
-      <div className="summary-badge">
+      <div className="gains-summary-badge">
         <TrendingUp size={26} />
       </div>
 
@@ -13,7 +13,7 @@ const MonthlyGainsCard = ({ isVisible, toggleVisibility, FormatReal }) => {
           Mês Anterior: {isVisible ? FormatReal(2371) : "••••••"}
         </p>
         <h2 className="summary-title">Total de Ganhos Mensal</h2>
-        <p className="summary-amount">
+        <p className="summary-gain-amount">
           {isVisible ? FormatReal(2121) : "••••••"}
         </p>
       </div>

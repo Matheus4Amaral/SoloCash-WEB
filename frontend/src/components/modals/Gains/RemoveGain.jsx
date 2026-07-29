@@ -28,7 +28,7 @@ const RemoveGain = ({ isOpen, gain, onClose, onConfirm }) => {
         <div className="modal-actions remove-actions">
           <button
             type="button"
-            className="modal-button confirm-danger"
+            className="modal-gain-button confirm-danger"
             onClick={onConfirm}
           >
             <Trash2 size={20} aria-hidden="true" />
@@ -37,7 +37,7 @@ const RemoveGain = ({ isOpen, gain, onClose, onConfirm }) => {
 
           <button
             type="button"
-            className="modal-button cancel"
+            className="modal-gain-button cancel"
             onClick={onClose}
           >
             NÃO

@@ -6,7 +6,7 @@
   place-items: center;
   padding: 20px;
   background:
-    radial-gradient(circle at top, rgba(34, 197, 94, 0.16), transparent 35%),
+    radial-gradient(circle at top, rgba(231, 76, 60, 0.16), transparent 35%),
     rgba(15, 23, 42, 0.74);
   backdrop-filter: blur(10px);
 }
@@ -41,7 +41,7 @@
 .modal-title {
   margin: 8px 0 10px;
   text-align: center;
-  font-size: 36px;
+  font-size: clamp(1.8rem, 2.8vw, 2.3rem);
   line-height: 1.08;
   color: #334155;
 }
@@ -57,7 +57,7 @@
 
 .modal-kicker {
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -73,7 +73,7 @@
   display: block;
 }
 
-.modal-input {
+.modal-spent-input {
   width: 100%;
   min-height: 60px;
   border: none;
@@ -81,7 +81,7 @@
   background: #eef2f5;
   color: #334155;
   padding: 0 20px;
-  font-size: 16px;
+  font-size: 0.98rem;
   font-weight: 700;
   outline: none;
   transition:
@@ -90,19 +90,33 @@
     background-color 0.2s ease;
 }
 
-.modal-input::placeholder {
+.modal-spent-input::placeholder {
   color: #64748b;
   opacity: 1;
 }
 
-.modal-input:focus {
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+.modal-spent-input:focus {
+  box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.18);
   transform: translateY(-1px);
 }
 
 .modal-date-row {
   display: flex;
   align-items: stretch;
+}
+
+.modal-select {
+  width: 160px;
+  min-height: 60px;
+  border: none;
+  border-radius: 16px;
+  background: #eef2f5;
+  color: #64748b;
+  padding: 0 14px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
 }
 
 .visually-hidden-date-input {
@@ -122,6 +136,7 @@
   min-height: 60px;
   border: none;
   border-radius: 16px;
+  margin-right: 10px;
   background: #eef2f5;
   color: #64748b;
   display: flex;
@@ -157,14 +172,14 @@
   margin-top: 10px;
 }
 
-.modal-button {
+.modal-spent-button {
   flex: 1;
   min-height: 54px;
   min-width: 0;
   border: none;
   border-radius: 14px;
   padding: 12px 20px;
-  font-size: 16px;
+  font-size: 0.98rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
@@ -178,18 +193,18 @@
     opacity 0.2s ease;
 }
 
-.modal-button.confirm {
-  background: linear-gradient(180deg, #12d466 0%, #0ea64d 100%);
+.modal-spent-button.confirm {
+  background: linear-gradient(180deg, #e74c3c 0%, #9c2d21 100%);
   color: #ffffff;
-  box-shadow: 0 16px 26px rgba(18, 212, 102, 0.2);
+  box-shadow: 0 16px 26px rgba(231, 76, 60, 0.2);
 }
 
-.modal-button.cancel {
+.modal-spent-button.cancel {
   background: linear-gradient(180deg, #f59e8f 0%, #f28b82 100%);
   color: #ffffff;
   box-shadow: 0 16px 26px rgba(242, 139, 130, 0.18);
 }
 
-.modal-button:hover {
+.modal-spent-button:hover {
   transform: translateY(-1px);
 }

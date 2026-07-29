@@ -5,9 +5,9 @@ import Sidebar from "../components/Sidebar.jsx";
 import MonthlyGainsCard from "../components/Gains/MonthlyGainsCard.jsx";
 import MonthGainsCard from "../components/Gains/MonthGainsCard.jsx";
 import FormatReal from "../components/FormatReal.jsx";
-import AddGain from "../components/modals/AddGain.jsx";
-import EditGain from "../components/modals/EditGain.jsx";
-import RemoveGain from "../components/modals/RemoveGain.jsx";
+import AddGain from "../components/modals/Gains/AddGain.jsx";
+import EditGain from "../components/modals/Gains/EditGain.jsx";
+import RemoveGain from "../components/modals/Gains/RemoveGain.jsx";
 
 const monthGainArray = [
   {

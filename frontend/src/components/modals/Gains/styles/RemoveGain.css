@@ -26,10 +26,10 @@
   box-shadow: 0 16px 26px rgba(34, 197, 94, 0.2);
 }
 
-.remove-actions .modal-button.cancel {
+.remove-actions .modal-gain-button.cancel {
   background: linear-gradient(180deg, #f59e8f 0%, #f28b82 100%);
 }
 
-.remove-actions .modal-button {
+.remove-actions .modal-gain-button {
   flex: 0 1 170px;
 }

@@ -1,19 +1,19 @@
-import { CalendarDays, Plus, X } from "lucide-react";
+import { CalendarDays, Check, X } from "lucide-react";
 import { useRef, useState } from "react";
-import "./styles/AddGain.css";
-import MonetaryValueInput from "../MonetaryValueInput.jsx";
+import "./styles/EditSpent.css";
+import MonetaryValueInput from "../../MonetaryValueInput.jsx";
+import SelectCategory from "../../SelectCategory.jsx";
 
-const inicialState = {
-  title: "",
-  amount: "",
-  date: "",
-};
-
-const AddGain = ({ isOpen, onClose, onSubmit }) => {
-  const [formData, setFormData] = useState(inicialState);
+const EditSpent = ({ isOpen, spent, onClose, onSubmit }) => {
+  const [formData, setFormData] = useState(() => ({
+    title: spent?.title ?? "",
+    amount: spent?.amount ?? "",
+    date: spent?.date ?? "",
+    category: spent?.category ?? "",
+  }));
   const dateInputRef = useRef(null);
 
-  if (!isOpen) {
+  if (!isOpen || !spent) {
     return null;
   }
 
@@ -41,12 +41,8 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
     input.click();
   };
 
-  const cleanForm = () => {
-    setFormData(inicialState);
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
     setFormData((current) => ({
       ...current,
@@ -54,37 +50,30 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const payload = formData;
-    cleanForm();
-    onSubmit(payload);
-  };
-
-  const handleClose = () => {
-    cleanForm();
-    onClose();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
   };
 
   return (
-    <div className="modal-overlay" onClick={handleClose} role="presentation">
+    <div className="modal-overlay" onClick={onClose} role="presentation">
       <div
-        className="modal-card add-modal-card"
+        className="modal-card edit-modal-card"
         role="dialog"
         aria-modal="true"
-        onClick={(event) => event.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
-        <button
-          type="button"
-          className="modal-close-button"
-          onClick={handleClose}
-        >
+        <button type="button" className="modal-close-button" onClick={onClose}>
           <X size={20} aria-hidden="true" />
         </button>
 
         <h2 className="modal-title">
-          Adicionar Ganho
+          Editar Gasto
         </h2>
+
+        <p className="modal-subtitle">
+          Altere o título, value e data antes de salvar.
+        </p>
 
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="modal-field">
@@ -93,8 +82,8 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
               name="title"
               value={formData.title}
               onChange={handleChange}
+              className="modal-spent-input"
               placeholder="Digite um título"
-              className="modal-input"
               required
             />
           </div>
@@ -106,8 +95,8 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
               onValueChange={(value) =>
                 handleChange({ target: { name: "amount", value } })
               }
-              placeholder="Digite o value do ganho"
-              className="modal-input"
+              className="modal-spent-input"
+              placeholder="Digite o value do gasto"
               required
             />
           </div>
@@ -122,30 +111,37 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
               className="visually-hidden-date-input"
               aria-hidden="true"
               tabIndex={-1}
-              required
             />
 
             <button
               type="button"
               className="date-picker-button"
               onClick={openCalendar}
-              aria-label="Selecionar data do ganho"
+              aria-label="Selecionar data do gasto"
             >
               <CalendarDays size={28} aria-hidden="true" />
               <p>{formatDisplayDate(formData.date)}</p>
             </button>
+
+            <SelectCategory
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="modal-select"
+              required
+            />
           </div>
 
           <div className="modal-actions">
-            <button type="submit" className="modal-button confirm">
-              <Plus size={20} aria-hidden="true" />
-              Adicionar ganho
+            <button type="submit" className="modal-spent-button confirm">
+              <Check size={20} aria-hidden="true" />
+              Salvar alterações
             </button>
 
             <button
               type="button"
-              className="modal-button cancel"
-              onClick={handleClose}
+              className="modal-spent-button cancel"
+              onClick={onClose}
             >
               Cancelar
             </button>
@@ -156,4 +152,4 @@ const AddGain = ({ isOpen, onClose, onSubmit }) => {
   );
 };
 
-export default AddGain;
+export default EditSpent;
