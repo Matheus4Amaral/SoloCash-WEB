@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Home,
   TrendingUp,
@@ -8,14 +9,17 @@ import {
 import "./styles/Sidebar.css";
 
 const navigationItems = [
-  { label: "Home", icon: Home, active: false },
-  { label: "Ganhos", icon: TrendingUp, active: true },
-  { label: "Gastos", icon: TrendingDown, active: false },
-  { label: "Histórico", icon: History, active: false },
-  { label: "Categorias", icon: Grid3X3, active: false },
+  { label: "Home", icon: Home, path: "/home" },
+  { label: "Ganhos", icon: TrendingUp, path: "/gains" },
+  { label: "Gastos", icon: TrendingDown, path: "/spents" },
+  { label: "Histórico", icon: History, path: "/history" },
+  { label: "Categorias", icon: Grid3X3, path: "/categories" },
 ];
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
@@ -33,17 +37,21 @@ const Sidebar = () => {
       </div>
 
       <nav className="sidebar-nav" aria-label="Navegação principal">
-        {navigationItems.map(({ label, icon: Icon, active }) => (
-          <button
-            key={label}
-            type="button"
-            className={`sidebar-nav-item ${active ? " active" : ""}`}
-            aria-current={active ? "page" : undefined}
-          >
-            <Icon size={18} aria-hidden="true" />
-            <p>{label}</p>
-          </button>
-        ))}
+        {navigationItems.map(({ label, icon: Icon, path }) => {
+          const active = location.pathname === path;
+          return (
+            <button
+              key={label}
+              type="button"
+              className={`sidebar-nav-item ${active ? " active" : ""}`}
+              aria-current={active ? "page" : undefined}
+              onClick={() => navigate(path)}
+            >
+              <Icon size={18} aria-hidden="true" />
+              <p>{label}</p>
+            </button>
+          );
+        })}
       </nav>
     </aside>
   );
