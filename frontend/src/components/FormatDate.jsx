@@ -6,7 +6,7 @@ const FormatDate = ({ dataISO }) => {
     locale: ptBR,
   });
 
-  return <p>{formatDate}</p>;
+  return <span>{formatDate}</span>;
 };
 
 export default FormatDate;

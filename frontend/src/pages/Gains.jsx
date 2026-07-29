@@ -94,7 +94,7 @@ function Gains() {
     <div className="dashboard-page">
       <Sidebar />
 
-      <main className="dashboard-content">
+      <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-header-top">
             <button type="button" className="back-button" aria-label="Voltar">
@@ -177,7 +177,7 @@ function Gains() {
           onClose={closeModal}
           onConfirm={removeGain}
         />
-      </main>
+      </div>
     </div>
   );
 }
