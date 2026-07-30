@@ -19,7 +19,8 @@ function Login() {
           </div>
           <LoginCard />
           <p className="legal-text">
-            Ao continuar, você concorda com nossos Termos de Uso e Política de Privacidade
+            Ao continuar, você concorda com nossos Termos de Uso e Política de
+            Privacidade
           </p>
         </div>
       </div>

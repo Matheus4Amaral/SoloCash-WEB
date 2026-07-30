@@ -1,6 +1,6 @@
 import { Plus, ChevronLeft } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./styles/Gains.css";
 import Sidebar from "../components/Sidebar.jsx";
 import MonthlyGainsCard from "../components/Gains/MonthlyGainsCard.jsx";
@@ -104,7 +104,12 @@ function Gains() {
       <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-header-top">
-            <button type="button" className="back-button" aria-label="Voltar" onClick={handleGoBack}>
+            <button
+              type="button"
+              className="back-button"
+              aria-label="Voltar"
+              onClick={handleGoBack}
+            >
               <ChevronLeft size={24} aria-hidden="true" />
             </button>
             <h1 className="dashboard-title">Gerenciar Ganhos</h1>
@@ -170,7 +175,7 @@ function Gains() {
         />
 
         <EditGain
-          key={`editar-${selectedGain?.id ?? "novo"}`} 
+          key={`editar-${selectedGain?.id ?? "novo"}`}
           isOpen={openModal === "editar"}
           gain={selectedGain}
           onClose={closeModal}

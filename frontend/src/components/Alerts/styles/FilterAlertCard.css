@@ -1,0 +1,33 @@
+.alerts-summary-card {
+  width: min(100%, 700px);
+  padding: 24px 26px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 20px;
+}
+
+.alerts-summary-copy {
+  text-align: left;
+}
+
+.alerts-summary-period {
+  display: grid;
+  gap: 12px;
+}
+
+.alerts-summary-dates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.alerts-summary-kicker {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+  margin-top: 12px;
+}

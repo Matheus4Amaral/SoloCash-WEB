@@ -1,6 +1,6 @@
 import { Plus, ChevronLeft } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./styles/Spents.css";
 import Sidebar from "../components/Sidebar.jsx";
 import MonthlySpentsCard from "../components/Spents/MonthlySpentsCard.jsx";
@@ -32,7 +32,7 @@ const monthSpentArray = [
     amount: "10.00",
     date: "2026-07-14",
     category: "Alimentação",
-  }
+  },
 ];
 
 function Spents() {
@@ -129,7 +129,12 @@ function Spents() {
       <div className="dashboard-content">
         <div className="dashboard-header">
           <div className="dashboard-header-top">
-            <button type="button" className="back-button" aria-label="Voltar" onClick={handleGoBack}>
+            <button
+              type="button"
+              className="back-button"
+              aria-label="Voltar"
+              onClick={handleGoBack}
+            >
               <ChevronLeft size={24} aria-hidden="true" />
             </button>
             <h1 className="dashboard-title">Gerenciar Gastos</h1>
@@ -201,7 +206,7 @@ function Spents() {
         />
 
         <EditSpent
-          key={`editar-${selectedSpent?.id ?? "novo"}`} 
+          key={`editar-${selectedSpent?.id ?? "novo"}`}
           isOpen={openModal === "editar"}
           spent={selectedSpent}
           onClose={closeModal}

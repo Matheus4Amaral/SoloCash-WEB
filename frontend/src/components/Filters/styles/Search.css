@@ -1,0 +1,33 @@
+.search-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #eef2f5;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.search-container svg {
+  color: #334155;
+}
+
+.search-container:focus {
+  box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.18);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #334155;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+  font-weight: 500;
+}
+
