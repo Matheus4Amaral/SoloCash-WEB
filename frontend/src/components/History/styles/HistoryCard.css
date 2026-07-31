@@ -1,0 +1,77 @@
+.history-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 12px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.history-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-icon.gain {
+  background: #d1fae5; /* light green */
+  color: #16a34a;
+}
+
+.history-icon.spent {
+  background: #fee2e2; /* light red */
+  color: #ef4444;
+}
+
+.history-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.history-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-title {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.history-category {
+  display: inline-block;
+  background: #eef2f5;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.history-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.history-amount {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.history-date {
+  color: #64748b;
+  font-weight: 700;
+}

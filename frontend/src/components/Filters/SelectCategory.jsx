@@ -12,7 +12,12 @@ const categories = [
   "Transporte",
 ];
 
-const SelectCategory = ({ name = "category", value, onChange, required = true }) => {
+const SelectCategory = ({
+  name = "category",
+  value,
+  onChange,
+  required = true,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -1,0 +1,49 @@
+.histories-summary-card {
+  width: min(100%, 820px);
+  padding: 24px 26px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 20px;
+}
+
+.summary-copy {
+  text-align: left;
+}
+
+.summary-period {
+  display: grid;
+  gap: 12px;
+}
+
+.summary-dates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.summary-kicker {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+  margin-top: 12px;
+}
+
+.summary-type-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.summary-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: auto;
+  align-items: flex-start;
+  text-align: left;
+}
