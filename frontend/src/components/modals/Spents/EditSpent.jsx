@@ -2,7 +2,7 @@ import { CalendarDays, Check, X } from "lucide-react";
 import { useRef, useState } from "react";
 import "./styles/EditSpent.css";
 import MonetaryValueInput from "../../MonetaryValueInput.jsx";
-import SelectCategory from "../../SelectCategory.jsx";
+import SelectCategory from "../../Filters/SelectCategory.jsx";
 
 const EditSpent = ({ isOpen, spent, onClose, onSubmit }) => {
   const [formData, setFormData] = useState(() => ({
@@ -67,9 +67,7 @@ const EditSpent = ({ isOpen, spent, onClose, onSubmit }) => {
           <X size={20} aria-hidden="true" />
         </button>
 
-        <h2 className="modal-title">
-          Editar Gasto
-        </h2>
+        <h2 className="modal-title">Editar Gasto</h2>
 
         <p className="modal-subtitle">
           Altere o título, value e data antes de salvar.

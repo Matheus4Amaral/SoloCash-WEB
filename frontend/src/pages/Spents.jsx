@@ -9,7 +9,7 @@ import FormatReal from "../components/FormatReal.jsx";
 import AddSpent from "../components/modals/Spents/AddSpent.jsx";
 import EditSpent from "../components/modals/Spents/EditSpent.jsx";
 import RemoveSpent from "../components/modals/Spents/RemoveSpent.jsx";
-import SelectCategory from "../components/SelectCategory.jsx";
+import SelectCategory from "../components/Filters/SelectCategory.jsx";
 
 const monthSpentArray = [
   {
