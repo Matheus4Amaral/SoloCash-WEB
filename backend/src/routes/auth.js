@@ -82,7 +82,7 @@ router.post('/registrar', async (req, res) => {
              VALUES ($1, $2, $3, 1)
              RETURNING id, nome, email`,
             [nome.trim(), email.toLowerCase().trim(), senhaHash]
-        )
+        )   
 
         return res.status(201).json({ message: 'Usuário criado com sucesso.', usuario: rows[0] })
     } catch (err) {
